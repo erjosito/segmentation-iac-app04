@@ -19,6 +19,9 @@ jobs:
       with:
         repository: erjosito/segmentation-iac
         path: './app04/prod/shared'
+    # Runs command 'find .' to show directory structure
+    - name: Show directory structure
+      run: find .
     # Log into Azure
     - uses: azure/login@v1
       with:
