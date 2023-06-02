@@ -1,5 +1,9 @@
 name: Remote AzFW deployment
 on:
+  push:
+    branches: [master]
+    paths:
+      - '**/*.json'
   workflow_dispatch:
 
 jobs:

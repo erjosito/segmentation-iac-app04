@@ -1,0 +1,25 @@
+{
+    "action": {
+        "type": "allow"
+    },
+    "name": "app04-network-test",
+    "priority": "14102",
+    "ruleCollectionType": "FirewallPolicyFilterRuleCollection",
+    "rules": [
+        {
+            "name": "app03-web_to_sql",
+            "destinationAddresses": [ "10.10.14.128/26" ],
+            "destinationFqdns": [],
+            "destinationIpGroups": [],
+            "destinationPorts": [
+                "1433"
+            ],
+            "ipProtocols": [
+                "TCP"
+            ],
+            "ruleType": "NetworkRule",
+            "sourceAddresses": [ "10.10.14.128/26" ],
+            "sourceIpGroups": []
+        }
+    ]
+}
