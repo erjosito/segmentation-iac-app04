@@ -12,7 +12,7 @@ resource app04nsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = {
                 properties: {
                     access: 'Allow'
                     description: 'Allows inbound web access to the web servers'
-                    destinationAddressPrefix: 'VirtualNetwork'
+                    destinationAddressPrefix: '10.10.14.0/26'
                     destinationPortRange: '443'
                     direction: 'inbound'
                     priority: 1010
