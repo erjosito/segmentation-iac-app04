@@ -6,18 +6,24 @@ on:
 name: Deploy Production NSG - bicep
 jobs:
   deploy-prod-nsg-bicep:
+    concurrency:
+      group: deploy_nsg_prod
     runs-on: ubuntu-latest
     steps:
-
-      # Checkout code
-    - uses: actions/checkout@main
-
-      # Log into Azure
+    # Checkout current repo
+    - name: Checkout local repo
+      uses: actions/checkout@main
+    # Checkout remote repo (the path is important, the bicep template expects to find it there)
+    - name: Checkout shared repo
+      uses: actions/checkout@v2
+      with:
+        repository: erjosito/segmentation-iac
+        path: './app04/prod/shared'
+    # Log into Azure
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      # Deploy bicep template
+    # Deploy bicep template
     - name: Run bicep deployment
       uses: azure/arm-deploy@v1
       with:

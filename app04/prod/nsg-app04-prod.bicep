@@ -24,3 +24,11 @@ resource app04nsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = {
         ]
     }
 }
+
+// Deploy shared NSG rules
+module sharedInboundRules './shared/shared/bicep/nsg-shared-inbound-rules.bicep' = {
+  name: 'in-rules-deploy'
+  params: { 
+    nsgName: app04nsg.name
+  }
+}
