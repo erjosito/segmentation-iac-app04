@@ -1,6 +1,6 @@
 name: Remote AzFW deployment
 on:
-  repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   Remote-AzFW-Deployment:
