@@ -7,12 +7,12 @@ resource app04nsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = {
     properties: {
       securityRules: [
         {
-          name: 'anyToWeb-inbound'
+          name: '${nsgName}/anyToWeb-inbound'
           properties: {
             access: 'Allow'
             description: 'Allows inbound web access to the web servers'
-            destinationAddressPrefix: '10.10.14.0/28'
-            destinationPortRange: 443
+            destinationAddressPrefix: 'VirtualNetwork'
+            destinationPortRange: '443'
             direction: 'inbound'
             priority: 1010
             protocol: 'TCP'
@@ -22,4 +22,4 @@ resource app04nsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = {
         }
       ]
     }
-  }
+}
