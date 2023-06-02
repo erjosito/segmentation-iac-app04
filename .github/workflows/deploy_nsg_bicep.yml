@@ -1,23 +1,27 @@
-  on: [push]
-  name: Deploy NSG - bicep
-  jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'app04/prod/nsg-app04-prod.bicep'
+name: Deploy Production NSG - bicep
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
 
-        # Checkout code
-      - uses: actions/checkout@main
+      # Checkout code
+    - uses: actions/checkout@main
 
-        # Log into Azure
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy bicep template
-      - name: Run bicep deploy
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: ./app04/prod/nsg-app04-prod.json
-          parameters: nsgName='app04-prod-nsg'
+      # Deploy bicep template
+    - name: Run bicep deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./app04/prod/nsg-app04-prod.json
+        parameters: nsgName='app04-prod-nsg'
