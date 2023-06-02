@@ -5,7 +5,7 @@ on:
       - 'app04/prod/nsg-app04-prod.bicep'
 name: Deploy Production NSG - bicep
 jobs:
-  build-and-deploy:
+  deploy-prod-nsg-bicep:
     runs-on: ubuntu-latest
     steps:
 
@@ -23,5 +23,5 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./app04/prod/nsg-app04-prod.json
+        template: ./app04/prod/nsg-app04-prod.bicep
         parameters: nsgName='app04-prod-nsg'
