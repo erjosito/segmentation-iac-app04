@@ -1,3 +1,4 @@
+@description('Name of the Azure Network Security Group')
 param nsgName string = 'app04-prod-nsg'
 param location string = resourceGroup().location
 

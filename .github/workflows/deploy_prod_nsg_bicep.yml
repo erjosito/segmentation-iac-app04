@@ -24,4 +24,4 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./app04/prod/nsg-app04-prod.bicep
-        parameters: nsgName='app04-prod-nsg'
+        parameters: nsgName=app04-prod-nsg
