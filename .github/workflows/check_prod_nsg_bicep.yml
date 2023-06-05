@@ -3,7 +3,7 @@ on:
     branches: [master]
     paths:
       - 'app04/prod/nsg-app04-prod.bicep'
-name: Deploy Production NSG - bicep
+name: Check Production NSG - bicep
 jobs:
   deploy-prod-nsg-bicep:
     runs-on: ubuntu-latest
