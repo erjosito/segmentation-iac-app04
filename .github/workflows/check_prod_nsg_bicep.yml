@@ -22,7 +22,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     # Deploy bicep template
-    - name: Run bicep deployment
+    - name: Preflight check for infra bicep template
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
